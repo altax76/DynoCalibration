@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PIDChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataSetOneComboBox = new System.Windows.Forms.ComboBox();
             this.dataSetTwoComboBox = new System.Windows.Forms.ComboBox();
@@ -105,31 +105,31 @@
             // 
             // PIDChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.PIDChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.PIDChart.Legends.Add(legend4);
+            chartArea3.Name = "ChartArea1";
+            this.PIDChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.PIDChart.Legends.Add(legend3);
             this.PIDChart.Location = new System.Drawing.Point(12, 12);
             this.PIDChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PIDChart.Name = "PIDChart";
-            series10.BorderWidth = 3;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Legend = "Legend1";
-            series10.Name = "Data Set 1";
-            series11.BorderWidth = 3;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Legend = "Legend1";
-            series11.Name = "Data Set 2";
-            series12.BorderWidth = 3;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Legend = "Legend1";
-            series12.Name = "Data Set 3";
-            this.PIDChart.Series.Add(series10);
-            this.PIDChart.Series.Add(series11);
-            this.PIDChart.Series.Add(series12);
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "Data Set 1";
+            series8.BorderWidth = 3;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Data Set 2";
+            series9.BorderWidth = 3;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.Name = "Data Set 3";
+            this.PIDChart.Series.Add(series7);
+            this.PIDChart.Series.Add(series8);
+            this.PIDChart.Series.Add(series9);
             this.PIDChart.Size = new System.Drawing.Size(899, 473);
             this.PIDChart.TabIndex = 0;
             this.PIDChart.Text = "PIDChart";
@@ -148,7 +148,8 @@
             this.dataSetOneComboBox.Name = "dataSetOneComboBox";
             this.dataSetOneComboBox.Size = new System.Drawing.Size(121, 24);
             this.dataSetOneComboBox.TabIndex = 1;
-            this.dataSetOneComboBox.Text = "None";
+            this.dataSetOneComboBox.Tag = "";
+            this.dataSetOneComboBox.Text = "RPM";
             this.dataSetOneComboBox.SelectedIndexChanged += new System.EventHandler(this.dataSetOneComboBox_SelectedIndexChanged);
             // 
             // dataSetTwoComboBox
@@ -165,7 +166,7 @@
             this.dataSetTwoComboBox.Name = "dataSetTwoComboBox";
             this.dataSetTwoComboBox.Size = new System.Drawing.Size(121, 24);
             this.dataSetTwoComboBox.TabIndex = 2;
-            this.dataSetTwoComboBox.Text = "None";
+            this.dataSetTwoComboBox.Text = "Torque";
             this.dataSetTwoComboBox.SelectedIndexChanged += new System.EventHandler(this.dataSetTwoComboBox_SelectedIndexChanged);
             // 
             // dataSetThreeComboBox
@@ -182,7 +183,7 @@
             this.dataSetThreeComboBox.Name = "dataSetThreeComboBox";
             this.dataSetThreeComboBox.Size = new System.Drawing.Size(121, 24);
             this.dataSetThreeComboBox.TabIndex = 3;
-            this.dataSetThreeComboBox.Text = "None";
+            this.dataSetThreeComboBox.Text = "Filtered Output";
             this.dataSetThreeComboBox.SelectedIndexChanged += new System.EventHandler(this.dataSetThreeComboBox_SelectedIndexChanged);
             // 
             // dataSetOneLabel
@@ -333,7 +334,7 @@
             this.dataSetOneScaleTextBox.Name = "dataSetOneScaleTextBox";
             this.dataSetOneScaleTextBox.Size = new System.Drawing.Size(33, 22);
             this.dataSetOneScaleTextBox.TabIndex = 24;
-            this.dataSetOneScaleTextBox.Text = "1";
+            this.dataSetOneScaleTextBox.Text = "0.05";
             this.dataSetOneScaleTextBox.Validated += new System.EventHandler(this.dataSetOneScaleTextBox_Validated);
             // 
             // scaleLabel
@@ -433,7 +434,7 @@
             this.kDTrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kDTrackBar.Maximum = 1000;
             this.kDTrackBar.Name = "kDTrackBar";
-            this.kDTrackBar.Size = new System.Drawing.Size(225, 56);
+            this.kDTrackBar.Size = new System.Drawing.Size(225, 45);
             this.kDTrackBar.TabIndex = 67;
             this.kDTrackBar.TickFrequency = 100;
             this.kDTrackBar.Scroll += new System.EventHandler(this.kDTrackBar_Scroll);
@@ -484,7 +485,7 @@
             this.kITrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kITrackBar.Maximum = 1000;
             this.kITrackBar.Name = "kITrackBar";
-            this.kITrackBar.Size = new System.Drawing.Size(225, 56);
+            this.kITrackBar.Size = new System.Drawing.Size(225, 45);
             this.kITrackBar.TabIndex = 62;
             this.kITrackBar.TickFrequency = 100;
             this.kITrackBar.Scroll += new System.EventHandler(this.kITrackBar_Scroll);
@@ -496,7 +497,7 @@
             this.PAULabel.Location = new System.Drawing.Point(136, 18);
             this.PAULabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PAULabel.Name = "PAULabel";
-            this.PAULabel.Size = new System.Drawing.Size(281, 62);
+            this.PAULabel.Size = new System.Drawing.Size(222, 50);
             this.PAULabel.TabIndex = 61;
             this.PAULabel.Text = "Power Absorbtion \r\nUnit (PAU) Calibration\r\n";
             this.PAULabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -547,7 +548,7 @@
             this.kPTrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kPTrackBar.Maximum = 1000;
             this.kPTrackBar.Name = "kPTrackBar";
-            this.kPTrackBar.Size = new System.Drawing.Size(225, 56);
+            this.kPTrackBar.Size = new System.Drawing.Size(225, 45);
             this.kPTrackBar.TabIndex = 56;
             this.kPTrackBar.TickFrequency = 100;
             this.kPTrackBar.Scroll += new System.EventHandler(this.kPTrackBar_Scroll);
@@ -584,7 +585,7 @@
             this.RPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RPMLabel.Location = new System.Drawing.Point(45, 635);
             this.RPMLabel.Name = "RPMLabel";
-            this.RPMLabel.Size = new System.Drawing.Size(180, 69);
+            this.RPMLabel.Size = new System.Drawing.Size(144, 55);
             this.RPMLabel.TabIndex = 79;
             this.RPMLabel.Text = "RPM:";
             // 
@@ -594,7 +595,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(283, 635);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 69);
+            this.label1.Size = new System.Drawing.Size(190, 55);
             this.label1.TabIndex = 80;
             this.label1.Text = "Torque:";
             // 
@@ -604,7 +605,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(557, 635);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(343, 69);
+            this.label2.Size = new System.Drawing.Size(274, 55);
             this.label2.TabIndex = 81;
             this.label2.Text = "PID Output:\r\n";
             // 
@@ -614,7 +615,7 @@
             this.currentRPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentRPMLabel.Location = new System.Drawing.Point(45, 705);
             this.currentRPMLabel.Name = "currentRPMLabel";
-            this.currentRPMLabel.Size = new System.Drawing.Size(162, 69);
+            this.currentRPMLabel.Size = new System.Drawing.Size(132, 55);
             this.currentRPMLabel.TabIndex = 82;
             this.currentRPMLabel.Text = "1400";
             // 
@@ -624,7 +625,7 @@
             this.currentTorqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTorqueLabel.Location = new System.Drawing.Point(323, 705);
             this.currentTorqueLabel.Name = "currentTorqueLabel";
-            this.currentTorqueLabel.Size = new System.Drawing.Size(146, 69);
+            this.currentTorqueLabel.Size = new System.Drawing.Size(118, 55);
             this.currentTorqueLabel.TabIndex = 83;
             this.currentTorqueLabel.Text = "46.2";
             // 
@@ -634,7 +635,7 @@
             this.currentPIDOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentPIDOutputLabel.Location = new System.Drawing.Point(631, 705);
             this.currentPIDOutputLabel.Name = "currentPIDOutputLabel";
-            this.currentPIDOutputLabel.Size = new System.Drawing.Size(129, 69);
+            this.currentPIDOutputLabel.Size = new System.Drawing.Size(105, 55);
             this.currentPIDOutputLabel.TabIndex = 84;
             this.currentPIDOutputLabel.Text = "255";
             // 
@@ -723,7 +724,7 @@
             this.panel7.Location = new System.Drawing.Point(55, 784);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1375, 38);
+            this.panel7.Size = new System.Drawing.Size(803, 38);
             this.panel7.TabIndex = 88;
             // 
             // SerialMonitorOutputLabel

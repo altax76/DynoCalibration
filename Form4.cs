@@ -101,7 +101,7 @@ namespace DynoCalibration
             InitializeComponent();
 
             excelFilePath = "C:\\Users\\anton\\source\\repos\\DynoCalibration\\dynoConfig.xlsx";
-            serialPort1.Open();
+            //serialPort1.Open();
 
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             configFilePath = "C:\\Users\\anton\\source\\repos\\DynoCalibration\\dynoConfig.xlsx";
@@ -139,6 +139,18 @@ namespace DynoCalibration
                     kDMin = (double)worksheet.Cells[11, 6].Value;
                     kD = (double)worksheet.Cells[12, 6].Value;
                     kDMax = (double)worksheet.Cells[13, 6].Value;
+
+                    dataSetOneComboBox.SelectedItem = (string)worksheet.Cells[15, 6].Value;
+                    dataSetOneScaleTextBox.Text = ((double)worksheet.Cells[16,6].Value).ToString();
+                    dataSetOneScale = double.Parse(dataSetOneScaleTextBox.Text);
+                    dataSetTwoComboBox.SelectedItem = (string)worksheet.Cells[17, 6].Value;
+                    dataSetTwoScaleTextBox.Text = ((double)worksheet.Cells[18, 6].Value).ToString();
+                    dataSetTwoScale = double.Parse(dataSetTwoScaleTextBox.Text);
+                    dataSetThreeComboBox.SelectedItem = (string)worksheet.Cells[19, 6].Value;
+                    dataSetThreeScaleTextBox.Text = ((double)worksheet.Cells[20, 6].Value).ToString();
+                    dataSetThreeScale = double.Parse(dataSetThreeScaleTextBox.Text);
+
+                    targetRPMTextBox.Text = ((double)worksheet.Cells[22,6].Value).ToString();
 
                     strainOffset = (double)worksheet.Cells[8, 2].Value;
                     strainSlope = (double)worksheet.Cells[7, 2].Value;
@@ -501,7 +513,7 @@ namespace DynoCalibration
             if (string.IsNullOrWhiteSpace(dataSetOneScaleTextBox.Text))
             {
                 // Set default value of 1
-                dataSetOneScaleTextBox.Text = "1";
+                dataSetOneScaleTextBox.Text = dataSetOneScale.ToString();
             }
 
             // Parse the value to a double
@@ -803,6 +815,62 @@ namespace DynoCalibration
         private void timer1_Tick(object sender, EventArgs e)
         {
             serialPort1.Write("request_data");
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?",
+                                                  "Confirm Exit",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true; // Prevent the form from closing
+            }
+            if (result == DialogResult.Yes)
+            {
+                if (!File.Exists(excelFilePath))
+                {
+                    Console.WriteLine("Error: File does not exist.");
+                    return;
+                }
+
+                try
+                {
+                    // Open the existing Excel file
+                    FileInfo existingFile = new FileInfo(excelFilePath);
+                    using (ExcelPackage excel = new ExcelPackage(existingFile))
+                    {
+                        // Get the first worksheet in the workbook (or you can get a specific one)
+                        var worksheet = excel.Workbook.Worksheets[0]; // Accessing the first worksheet
+
+                        // Modify cells in the worksheet
+
+                        worksheet.Cells[15, 6].Value = dataSetOneComboBox.SelectedItem;
+                        worksheet.Cells[16, 6].Value = double.Parse(dataSetOneScaleTextBox.Text);
+                        worksheet.Cells[17, 6].Value = dataSetTwoComboBox.SelectedItem;
+                        worksheet.Cells[18, 6].Value = double.Parse(dataSetTwoScaleTextBox.Text);
+                        worksheet.Cells[19, 6].Value = dataSetThreeComboBox.SelectedItem;
+                        worksheet.Cells[20, 6].Value = double.Parse(dataSetThreeScaleTextBox.Text);
+
+                        worksheet.Cells[22, 6].Value = double.Parse(targetRPMTextBox.Text);
+
+
+
+                        // Save the modified Excel file
+                        excel.Save();
+
+                        Console.WriteLine("Excel file modified and saved successfully.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
         }
     }
 }
