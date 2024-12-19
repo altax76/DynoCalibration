@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.PIDChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataSetOneComboBox = new System.Windows.Forms.ComboBox();
             this.dataSetTwoComboBox = new System.Windows.Forms.ComboBox();
@@ -94,6 +94,9 @@
             this.SerialMonitorOutputLabel = new System.Windows.Forms.Label();
             this.SerialMonitorLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.minus250Button = new System.Windows.Forms.Button();
+            this.plus250Button = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PIDChart)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kDTrackBar)).BeginInit();
@@ -105,31 +108,31 @@
             // 
             // PIDChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.PIDChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.PIDChart.Legends.Add(legend3);
+            chartArea9.Name = "ChartArea1";
+            this.PIDChart.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.PIDChart.Legends.Add(legend9);
             this.PIDChart.Location = new System.Drawing.Point(12, 12);
             this.PIDChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PIDChart.Name = "PIDChart";
-            series7.BorderWidth = 3;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "Data Set 1";
-            series8.BorderWidth = 3;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "Data Set 2";
-            series9.BorderWidth = 3;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Legend = "Legend1";
-            series9.Name = "Data Set 3";
-            this.PIDChart.Series.Add(series7);
-            this.PIDChart.Series.Add(series8);
-            this.PIDChart.Series.Add(series9);
+            series25.BorderWidth = 3;
+            series25.ChartArea = "ChartArea1";
+            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series25.Legend = "Legend1";
+            series25.Name = "Data Set 1";
+            series26.BorderWidth = 3;
+            series26.ChartArea = "ChartArea1";
+            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series26.Legend = "Legend1";
+            series26.Name = "Data Set 2";
+            series27.BorderWidth = 3;
+            series27.ChartArea = "ChartArea1";
+            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series27.Legend = "Legend1";
+            series27.Name = "Data Set 3";
+            this.PIDChart.Series.Add(series25);
+            this.PIDChart.Series.Add(series26);
+            this.PIDChart.Series.Add(series27);
             this.PIDChart.Size = new System.Drawing.Size(899, 473);
             this.PIDChart.TabIndex = 0;
             this.PIDChart.Text = "PIDChart";
@@ -349,7 +352,7 @@
             // sendGain
             // 
             this.sendGain.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendGain.Location = new System.Drawing.Point(171, 350);
+            this.sendGain.Location = new System.Drawing.Point(136, 397);
             this.sendGain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sendGain.Name = "sendGain";
             this.sendGain.Size = new System.Drawing.Size(143, 47);
@@ -360,17 +363,18 @@
             // 
             // targetRPMTextBox
             // 
-            this.targetRPMTextBox.Location = new System.Drawing.Point(180, 89);
+            this.targetRPMTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targetRPMTextBox.Location = new System.Drawing.Point(153, 80);
             this.targetRPMTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.targetRPMTextBox.Name = "targetRPMTextBox";
-            this.targetRPMTextBox.Size = new System.Drawing.Size(132, 22);
+            this.targetRPMTextBox.Size = new System.Drawing.Size(132, 49);
             this.targetRPMTextBox.TabIndex = 75;
-            this.targetRPMTextBox.Text = "1400";
+            this.targetRPMTextBox.Text = "#####";
             // 
             // setTargetRPMLabel
             // 
             this.setTargetRPMLabel.AutoSize = true;
-            this.setTargetRPMLabel.Location = new System.Drawing.Point(56, 92);
+            this.setTargetRPMLabel.Location = new System.Drawing.Point(39, 96);
             this.setTargetRPMLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.setTargetRPMLabel.Name = "setTargetRPMLabel";
             this.setTargetRPMLabel.Size = new System.Drawing.Size(106, 16);
@@ -391,7 +395,7 @@
             // kDValueLabel
             // 
             this.kDValueLabel.AutoSize = true;
-            this.kDValueLabel.Location = new System.Drawing.Point(1536, 309);
+            this.kDValueLabel.Location = new System.Drawing.Point(1536, 371);
             this.kDValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.kDValueLabel.Name = "kDValueLabel";
             this.kDValueLabel.Size = new System.Drawing.Size(51, 16);
@@ -400,7 +404,7 @@
             // 
             // kDValueTextBox
             // 
-            this.kDValueTextBox.Location = new System.Drawing.Point(1597, 305);
+            this.kDValueTextBox.Location = new System.Drawing.Point(1597, 367);
             this.kDValueTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kDValueTextBox.Name = "kDValueTextBox";
             this.kDValueTextBox.Size = new System.Drawing.Size(36, 22);
@@ -410,7 +414,7 @@
             // 
             // kDMaxTextBox
             // 
-            this.kDMaxTextBox.Location = new System.Drawing.Point(1457, 305);
+            this.kDMaxTextBox.Location = new System.Drawing.Point(1457, 367);
             this.kDMaxTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kDMaxTextBox.Name = "kDMaxTextBox";
             this.kDMaxTextBox.Size = new System.Drawing.Size(60, 22);
@@ -420,7 +424,7 @@
             // 
             // kDMinTextBox
             // 
-            this.kDMinTextBox.Location = new System.Drawing.Point(1155, 305);
+            this.kDMinTextBox.Location = new System.Drawing.Point(1155, 367);
             this.kDMinTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kDMinTextBox.Name = "kDMinTextBox";
             this.kDMinTextBox.Size = new System.Drawing.Size(60, 22);
@@ -430,11 +434,11 @@
             // 
             // kDTrackBar
             // 
-            this.kDTrackBar.Location = new System.Drawing.Point(1224, 305);
+            this.kDTrackBar.Location = new System.Drawing.Point(1224, 367);
             this.kDTrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kDTrackBar.Maximum = 1000;
             this.kDTrackBar.Name = "kDTrackBar";
-            this.kDTrackBar.Size = new System.Drawing.Size(225, 45);
+            this.kDTrackBar.Size = new System.Drawing.Size(225, 56);
             this.kDTrackBar.TabIndex = 67;
             this.kDTrackBar.TickFrequency = 100;
             this.kDTrackBar.Scroll += new System.EventHandler(this.kDTrackBar_Scroll);
@@ -442,7 +446,7 @@
             // kIValueLabel
             // 
             this.kIValueLabel.AutoSize = true;
-            this.kIValueLabel.Location = new System.Drawing.Point(1536, 245);
+            this.kIValueLabel.Location = new System.Drawing.Point(1536, 307);
             this.kIValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.kIValueLabel.Name = "kIValueLabel";
             this.kIValueLabel.Size = new System.Drawing.Size(44, 16);
@@ -451,7 +455,7 @@
             // 
             // kIValueTextBox
             // 
-            this.kIValueTextBox.Location = new System.Drawing.Point(1597, 240);
+            this.kIValueTextBox.Location = new System.Drawing.Point(1597, 302);
             this.kIValueTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kIValueTextBox.Name = "kIValueTextBox";
             this.kIValueTextBox.Size = new System.Drawing.Size(36, 22);
@@ -461,7 +465,7 @@
             // 
             // kIMaxTextBox
             // 
-            this.kIMaxTextBox.Location = new System.Drawing.Point(1457, 240);
+            this.kIMaxTextBox.Location = new System.Drawing.Point(1457, 302);
             this.kIMaxTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kIMaxTextBox.Name = "kIMaxTextBox";
             this.kIMaxTextBox.Size = new System.Drawing.Size(60, 22);
@@ -471,7 +475,7 @@
             // 
             // kIMinTextBox
             // 
-            this.kIMinTextBox.Location = new System.Drawing.Point(1155, 240);
+            this.kIMinTextBox.Location = new System.Drawing.Point(1155, 302);
             this.kIMinTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kIMinTextBox.Name = "kIMinTextBox";
             this.kIMinTextBox.Size = new System.Drawing.Size(60, 22);
@@ -481,11 +485,11 @@
             // 
             // kITrackBar
             // 
-            this.kITrackBar.Location = new System.Drawing.Point(1224, 240);
+            this.kITrackBar.Location = new System.Drawing.Point(1224, 302);
             this.kITrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kITrackBar.Maximum = 1000;
             this.kITrackBar.Name = "kITrackBar";
-            this.kITrackBar.Size = new System.Drawing.Size(225, 45);
+            this.kITrackBar.Size = new System.Drawing.Size(225, 56);
             this.kITrackBar.TabIndex = 62;
             this.kITrackBar.TickFrequency = 100;
             this.kITrackBar.Scroll += new System.EventHandler(this.kITrackBar_Scroll);
@@ -494,10 +498,10 @@
             // 
             this.PAULabel.AutoSize = true;
             this.PAULabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAULabel.Location = new System.Drawing.Point(136, 18);
+            this.PAULabel.Location = new System.Drawing.Point(136, 4);
             this.PAULabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PAULabel.Name = "PAULabel";
-            this.PAULabel.Size = new System.Drawing.Size(222, 50);
+            this.PAULabel.Size = new System.Drawing.Size(281, 62);
             this.PAULabel.TabIndex = 61;
             this.PAULabel.Text = "Power Absorbtion \r\nUnit (PAU) Calibration\r\n";
             this.PAULabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -505,7 +509,7 @@
             // kPValueLabel
             // 
             this.kPValueLabel.AutoSize = true;
-            this.kPValueLabel.Location = new System.Drawing.Point(1536, 182);
+            this.kPValueLabel.Location = new System.Drawing.Point(1536, 244);
             this.kPValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.kPValueLabel.Name = "kPValueLabel";
             this.kPValueLabel.Size = new System.Drawing.Size(50, 16);
@@ -514,7 +518,7 @@
             // 
             // kPValueTextBox
             // 
-            this.kPValueTextBox.Location = new System.Drawing.Point(1597, 178);
+            this.kPValueTextBox.Location = new System.Drawing.Point(1597, 240);
             this.kPValueTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kPValueTextBox.Name = "kPValueTextBox";
             this.kPValueTextBox.Size = new System.Drawing.Size(36, 22);
@@ -524,7 +528,7 @@
             // 
             // kPMaxTextBox
             // 
-            this.kPMaxTextBox.Location = new System.Drawing.Point(1457, 178);
+            this.kPMaxTextBox.Location = new System.Drawing.Point(1457, 240);
             this.kPMaxTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kPMaxTextBox.Name = "kPMaxTextBox";
             this.kPMaxTextBox.Size = new System.Drawing.Size(60, 22);
@@ -534,7 +538,7 @@
             // 
             // kPMinTextBox
             // 
-            this.kPMinTextBox.Location = new System.Drawing.Point(1155, 178);
+            this.kPMinTextBox.Location = new System.Drawing.Point(1155, 240);
             this.kPMinTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.kPMinTextBox.Name = "kPMinTextBox";
             this.kPMinTextBox.Size = new System.Drawing.Size(60, 22);
@@ -544,11 +548,11 @@
             // 
             // kPTrackBar
             // 
-            this.kPTrackBar.Location = new System.Drawing.Point(1224, 178);
+            this.kPTrackBar.Location = new System.Drawing.Point(1224, 240);
             this.kPTrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.kPTrackBar.Maximum = 1000;
             this.kPTrackBar.Name = "kPTrackBar";
-            this.kPTrackBar.Size = new System.Drawing.Size(225, 45);
+            this.kPTrackBar.Size = new System.Drawing.Size(225, 56);
             this.kPTrackBar.TabIndex = 56;
             this.kPTrackBar.TickFrequency = 100;
             this.kPTrackBar.Scroll += new System.EventHandler(this.kPTrackBar_Scroll);
@@ -556,6 +560,9 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.plus250Button);
+            this.panel2.Controls.Add(this.minus250Button);
             this.panel2.Controls.Add(this.sendTargetRPMButton);
             this.panel2.Controls.Add(this.sendGain);
             this.panel2.Controls.Add(this.PIDGainSaveButton);
@@ -570,10 +577,11 @@
             // 
             // sendTargetRPMButton
             // 
-            this.sendTargetRPMButton.Location = new System.Drawing.Point(321, 86);
+            this.sendTargetRPMButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendTargetRPMButton.Location = new System.Drawing.Point(293, 83);
             this.sendTargetRPMButton.Margin = new System.Windows.Forms.Padding(4);
             this.sendTargetRPMButton.Name = "sendTargetRPMButton";
-            this.sendTargetRPMButton.Size = new System.Drawing.Size(161, 30);
+            this.sendTargetRPMButton.Size = new System.Drawing.Size(182, 40);
             this.sendTargetRPMButton.TabIndex = 78;
             this.sendTargetRPMButton.Text = "Send Target RPM";
             this.sendTargetRPMButton.UseVisualStyleBackColor = true;
@@ -585,7 +593,7 @@
             this.RPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RPMLabel.Location = new System.Drawing.Point(45, 635);
             this.RPMLabel.Name = "RPMLabel";
-            this.RPMLabel.Size = new System.Drawing.Size(144, 55);
+            this.RPMLabel.Size = new System.Drawing.Size(180, 69);
             this.RPMLabel.TabIndex = 79;
             this.RPMLabel.Text = "RPM:";
             // 
@@ -595,7 +603,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(283, 635);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 55);
+            this.label1.Size = new System.Drawing.Size(236, 69);
             this.label1.TabIndex = 80;
             this.label1.Text = "Torque:";
             // 
@@ -605,7 +613,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(557, 635);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(274, 55);
+            this.label2.Size = new System.Drawing.Size(343, 69);
             this.label2.TabIndex = 81;
             this.label2.Text = "PID Output:\r\n";
             // 
@@ -615,7 +623,7 @@
             this.currentRPMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentRPMLabel.Location = new System.Drawing.Point(45, 705);
             this.currentRPMLabel.Name = "currentRPMLabel";
-            this.currentRPMLabel.Size = new System.Drawing.Size(132, 55);
+            this.currentRPMLabel.Size = new System.Drawing.Size(162, 69);
             this.currentRPMLabel.TabIndex = 82;
             this.currentRPMLabel.Text = "1400";
             // 
@@ -625,7 +633,7 @@
             this.currentTorqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTorqueLabel.Location = new System.Drawing.Point(323, 705);
             this.currentTorqueLabel.Name = "currentTorqueLabel";
-            this.currentTorqueLabel.Size = new System.Drawing.Size(118, 55);
+            this.currentTorqueLabel.Size = new System.Drawing.Size(146, 69);
             this.currentTorqueLabel.TabIndex = 83;
             this.currentTorqueLabel.Text = "46.2";
             // 
@@ -635,7 +643,7 @@
             this.currentPIDOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentPIDOutputLabel.Location = new System.Drawing.Point(631, 705);
             this.currentPIDOutputLabel.Name = "currentPIDOutputLabel";
-            this.currentPIDOutputLabel.Size = new System.Drawing.Size(105, 55);
+            this.currentPIDOutputLabel.Size = new System.Drawing.Size(129, 69);
             this.currentPIDOutputLabel.TabIndex = 84;
             this.currentPIDOutputLabel.Text = "255";
             // 
@@ -679,6 +687,7 @@
             // 
             this.serialPort1.BaudRate = 115200;
             this.serialPort1.PortName = "COM7";
+            this.serialPort1.ErrorReceived += new System.IO.Ports.SerialErrorReceivedEventHandler(this.serialPort1_ErrorReceived);
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // applyBrakeButton
@@ -747,8 +756,39 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 200;
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // minus250Button
+            // 
+            this.minus250Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minus250Button.Location = new System.Drawing.Point(142, 143);
+            this.minus250Button.Name = "minus250Button";
+            this.minus250Button.Size = new System.Drawing.Size(109, 41);
+            this.minus250Button.TabIndex = 79;
+            this.minus250Button.Text = "- 250";
+            this.minus250Button.UseVisualStyleBackColor = true;
+            this.minus250Button.Click += new System.EventHandler(this.minus250Button_Click);
+            // 
+            // plus250Button
+            // 
+            this.plus250Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plus250Button.Location = new System.Drawing.Point(257, 143);
+            this.plus250Button.Name = "plus250Button";
+            this.plus250Button.Size = new System.Drawing.Size(109, 41);
+            this.plus250Button.TabIndex = 80;
+            this.plus250Button.Text = "+ 250";
+            this.plus250Button.UseVisualStyleBackColor = true;
+            this.plus250Button.Click += new System.EventHandler(this.plus250Button_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(400, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.TabIndex = 93;
+            this.label3.Text = "label3";
             // 
             // Form4
             // 
@@ -871,5 +911,8 @@
         private System.Windows.Forms.Label SerialMonitorOutputLabel;
         private System.Windows.Forms.Label SerialMonitorLabel;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button plus250Button;
+        private System.Windows.Forms.Button minus250Button;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -70,8 +70,6 @@ namespace DynoCalibration
         private double N;
         private double Ts;
 
-
-
         List<double> timeList = new List<double>();
         List<int> rpmList = new List<int>();
         List<double> torqueList = new List<double>();
@@ -96,12 +94,13 @@ namespace DynoCalibration
         private int[] targetRPMArray = {1000, 1000, 1000, 1000, 1000};
 
 
+
         public Form4()
         {
             InitializeComponent();
 
             excelFilePath = "C:\\Users\\anton\\source\\repos\\DynoCalibration\\dynoConfig.xlsx";
-            //serialPort1.Open();
+            serialPort1.Open();
 
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             configFilePath = "C:\\Users\\anton\\source\\repos\\DynoCalibration\\dynoConfig.xlsx";
@@ -212,13 +211,16 @@ namespace DynoCalibration
                     serial = serial.Substring(1);
                     string[] parts = serial.Split(' ');
 
-                    if (parts.Length == 5)
+                    if (parts.Length == 6)
                     {
                         double timestamp = double.Parse(parts[0]);
                         int rpm = (int)(double.Parse(parts[1]) * engineWheelRatio / wheelRollerRatio);
                         double torque = double.Parse(parts[2]);
                         int unfilteredOutput = int.Parse(parts[3]);
                         int filteredOutput = int.Parse(parts[4]);
+                        int targetRPMRequest = int.Parse(parts[5]);
+
+                        
 
 
                         
@@ -235,6 +237,7 @@ namespace DynoCalibration
                             currentTorqueLabel.Text = Math.Round((torque*strainSlope+strainOffset),1).ToString();
                             currentPIDOutputLabel.Text = filteredOutput.ToString();
 
+                            label3.Text = ((int)(targetRPMRequest * engineWheelRatio / wheelRollerRatio)).ToString();
 
                             if (timeList.Count > 150)
                             {
@@ -793,7 +796,9 @@ namespace DynoCalibration
             targetRPMSent = true;
             double targetRPMa = double.Parse(targetRPMTextBox.Text) / engineWheelRatio * wheelRollerRatio;
             targetRPM = (int)targetRPMa;
+
             serialPort1.Write("target_rpm" + targetRPM.ToString());
+
         }
 
         private void chartRefreshButton_Click(object sender, EventArgs e)
@@ -814,7 +819,9 @@ namespace DynoCalibration
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            serialPort1.Write("request_data");
+ 
+                serialPort1.Write("request_data");
+  
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -872,5 +879,33 @@ namespace DynoCalibration
                 }
             }
         }
+
+        private void minus250Button_Click(object sender, EventArgs e)
+        {
+            targetRPMTextBox.Text = (int.Parse(targetRPMTextBox.Text)-250).ToString();
+        }
+
+        private void plus250Button_Click(object sender, EventArgs e)
+        {
+            targetRPMTextBox.Text = (int.Parse(targetRPMTextBox.Text) + 250).ToString();
+        }
+
+        private void serialPort1_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            try
+            {
+                // Retrieve the error information
+                SerialError errorType = e.EventType;
+
+                // Show the error in a message box
+                MessageBox.Show($"Serial Port Error: {errorType}", "Error Received", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Handle any unexpected exceptions
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }
