@@ -79,6 +79,8 @@ namespace DynoCalibration
         List<double> iGainList = new List<double>();
         List<double> dGainList = new List<double>();
         List<int> targetRPMList = new List<int>();
+        List<double> throttlePositionList = new List<double>();
+        List<int> motecRPMList = new List<int>();
 
         private double[] timeArray = { 1, 2, 3, 4, 5 };
 
@@ -92,8 +94,11 @@ namespace DynoCalibration
         private double[] dGainArray = { 2, 2, 2, 2, 2 };
 
         private int[] targetRPMArray = {1000, 1000, 1000, 1000, 1000};
+        private double[] throttlePositionArray = { 0, 0, 0, 0, 0 };
+        private int[] motecRPMArray = { 0, 0, 0, 0, 0 };
 
-
+        private double slope = 0;
+        private double intercept = 0;
 
         public Form4()
         {
@@ -157,9 +162,14 @@ namespace DynoCalibration
                     engineWheelRatio = (double)worksheet.Cells[4, 9].Value;
                     wheelRollerRatio = (double)worksheet.Cells[5, 9].Value;
 
+            
+
 
 
                 }
+
+                serialPort1.Write("strainCal" + strainSlope.ToString("0.00000000000000") + " " + strainOffset.ToString("0.00000000000000"));
+
             }
             catch (Exception ex)
             {
@@ -211,7 +221,7 @@ namespace DynoCalibration
                     serial = serial.Substring(1);
                     string[] parts = serial.Split(' ');
 
-                    if (parts.Length == 6)
+                    if (parts.Length == 8)
                     {
                         double timestamp = double.Parse(parts[0]);
                         int rpm = (int)(double.Parse(parts[1]) * engineWheelRatio / wheelRollerRatio);
@@ -219,11 +229,12 @@ namespace DynoCalibration
                         int unfilteredOutput = int.Parse(parts[3]);
                         int filteredOutput = int.Parse(parts[4]);
                         int targetRPMRequest = int.Parse(parts[5]);
+                        double TPS = double.Parse(parts[6]);
+                        int motecEngineRPM = int.Parse(parts[7]);
 
-                        
 
 
-                        
+
                         this.Invoke(new MethodInvoker(delegate
                         {
                             if (initialTimestamp < 0)
@@ -236,6 +247,8 @@ namespace DynoCalibration
                             currentRPMLabel.Text = rpm.ToString();
                             currentTorqueLabel.Text = Math.Round((torque*strainSlope+strainOffset),1).ToString();
                             currentPIDOutputLabel.Text = filteredOutput.ToString();
+                            engineRPMFromMotecLabel.Text = ("Motec RPM: " + motecEngineRPM.ToString());
+                            TPSLabel.Text = TPS.ToString();
 
                             label3.Text = ((int)(targetRPMRequest * engineWheelRatio / wheelRollerRatio)).ToString();
 
@@ -250,7 +263,11 @@ namespace DynoCalibration
                                 iGainList.RemoveAt(0);
                                 dGainList.RemoveAt(0);
                                 targetRPMList.RemoveAt(0);
-                                
+                                throttlePositionList.RemoveAt(0);
+                                motecRPMList.RemoveAt(0);
+
+
+
                                 timeList.Add(offsetTimestamp);
                                 rpmList.Add(rpm);
                                 torqueList.Add(torque * strainSlope + strainOffset);
@@ -260,6 +277,9 @@ namespace DynoCalibration
                                 iGainList.Add(kI);
                                 dGainList.Add(kD);
                                 targetRPMList.Add(targetRPM);
+                                throttlePositionList.Add(TPS);
+                                motecRPMList.Add(motecEngineRPM);
+
                             } else
                             {
                                 timeList.Add(offsetTimestamp);
@@ -271,6 +291,8 @@ namespace DynoCalibration
                                 iGainList.Add(kI);
                                 dGainList.Add(kD);
                                 targetRPMList.Add(targetRPM);
+                                throttlePositionList.Add(TPS);
+                                motecRPMList.Add(motecEngineRPM);
                             }
 
                             UpdateChart();
@@ -297,6 +319,9 @@ namespace DynoCalibration
             torqueArray = torqueList.ToArray();
             filteredOutputArray = filteredOutputList.ToArray();
             unfilteredOutputArray = unfilteredOutputList.ToArray();
+            targetRPMArray = targetRPMList.ToArray();
+            throttlePositionArray = throttlePositionList.ToArray();
+            motecRPMArray = motecRPMList.ToArray();
 
             switch (dataSetOneComboBox.SelectedItem.ToString())
             {
@@ -327,7 +352,16 @@ namespace DynoCalibration
                     scaledArrayOne = unfilteredOutputArray.Select(x => x * dataSetOneScale).ToArray();
                     PIDChart.Series[0].Points.DataBindXY(timeArray, scaledArrayOne);
                     break;
-
+                case "Throttle Position":
+                    PIDChart.Series[0].Enabled = true;
+                    scaledArrayOne = throttlePositionArray.Select(x => x * dataSetOneScale).ToArray();
+                    PIDChart.Series[0].Points.DataBindXY(timeArray, scaledArrayOne);
+                    break;
+                case "Motec RPM":
+                    PIDChart.Series[0].Enabled = true;
+                    scaledArrayOne = motecRPMArray.Select(x => x * dataSetOneScale).ToArray();
+                    PIDChart.Series[0].Points.DataBindXY(timeArray, scaledArrayOne);
+                    break;
                 default:
                     PIDChart.Series[0].Enabled = false;
                     break;
@@ -362,7 +396,16 @@ namespace DynoCalibration
                     scaledArrayTwo = unfilteredOutputArray.Select(x => x * dataSetTwoScale).ToArray();
                     PIDChart.Series[1].Points.DataBindXY(timeArray, scaledArrayTwo);
                     break;
-
+                case "Throttle Position":
+                    PIDChart.Series[1].Enabled = true;
+                    scaledArrayTwo = throttlePositionArray.Select(x => x * dataSetTwoScale).ToArray();
+                    PIDChart.Series[1].Points.DataBindXY(timeArray, scaledArrayTwo);
+                    break;
+                case "Motec RPM":
+                    PIDChart.Series[1].Enabled = true;
+                    scaledArrayTwo = motecRPMArray.Select(x => x * dataSetTwoScale).ToArray();
+                    PIDChart.Series[1].Points.DataBindXY(timeArray, scaledArrayTwo);
+                    break;
                 default:
                     PIDChart.Series[1].Enabled = false;
                     break;
@@ -398,6 +441,17 @@ namespace DynoCalibration
                     PIDChart.Series[2].Points.DataBindXY(timeArray, scaledArrayThree);
                     break;
 
+                case "Throttle Position":
+                    PIDChart.Series[2].Enabled = true;
+                    scaledArrayThree = throttlePositionArray.Select(x => x * dataSetThreeScale).ToArray();
+                    PIDChart.Series[2].Points.DataBindXY(timeArray, scaledArrayThree);
+                    break;
+
+                case "Motec RPM":
+                    PIDChart.Series[2].Enabled = true;
+                    scaledArrayThree = motecRPMArray.Select(x => x * dataSetThreeScale).ToArray();
+                    PIDChart.Series[2].Points.DataBindXY(timeArray, scaledArrayThree);
+                    break;
                 default:
                     PIDChart.Series[2].Enabled = false;
                     break;
@@ -452,6 +506,7 @@ namespace DynoCalibration
                 iGainArray = iGainList.ToArray();
                 dGainArray = dGainList.ToArray();
                 targetRPMArray = targetRPMList.ToArray();
+                throttlePositionArray = throttlePositionList.ToArray();
 
 
                 for (int i = 0; i < timeArray.Length; i++)
@@ -811,6 +866,8 @@ namespace DynoCalibration
             pGainList.Clear();
             iGainList.Clear();
             dGainList.Clear();
+            throttlePositionList.Clear();
+            motecRPMList.Clear();
             initialTimestamp = -1; // Reset the initial timestamp
             serialPort1.DiscardInBuffer(); // Clear the input buffer
             serialPort1.DiscardOutBuffer(); // Clear the output buffer

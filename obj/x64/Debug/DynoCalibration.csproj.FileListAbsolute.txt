@@ -1,7 +1,6 @@
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\DynoCalibration.exe.config
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\DynoCalibration.exe
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\DynoCalibration.pdb
-C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\calculateMetrics.dll
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\EPPlus.dll
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\EPPlus.Interfaces.dll
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\EPPlus.System.Drawing.dll
@@ -33,5 +32,4 @@ C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\obj\x64\Debug\DynoCa
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\obj\x64\Debug\DynoCalibration.exe
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\obj\x64\Debug\DynoCalibration.pdb
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\obj\x64\Debug\DynoCalibration.Form6.resources
-C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\calculateCoastDownCoef.dll
 C:\Users\anton\source\repos\DynoCalibration\DynoCalibration\bin\x64\Debug\calculateCoastDownCoef.xml

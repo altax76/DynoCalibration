@@ -235,6 +235,8 @@ namespace DynoCalibration
                     this.Invoke(new MethodInvoker(delegate
                     {
                         RPMLabel.Text = $"{(serial + " RPM")}";
+                        double speed = double.Parse(serial) * 27.018 / 656.2; //[km/hr]
+                        vehicleSpeedLabel.Text = (speed.ToString("0.00")+ " kph");
                     }));
                 }
             }
@@ -318,6 +320,7 @@ namespace DynoCalibration
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+            serialPort1.Write("strainCal" + slope.ToString("0.00000000000000") + " " + yIntercept.ToString("0.00000000000000"));
         }
 
         private void closeButton_Click(object sender, EventArgs e)

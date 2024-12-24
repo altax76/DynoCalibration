@@ -56,6 +56,7 @@
             this.emergencyPAUVoltageValueLabel = new System.Windows.Forms.Label();
             this.startPAUVoltageTestButton = new System.Windows.Forms.Button();
             this.PAUValueLabel = new System.Windows.Forms.Label();
+            this.vehicleSpeedLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.emergencyPAUVoltageTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -339,11 +340,21 @@
             this.PAUValueLabel.TabIndex = 54;
             this.PAUValueLabel.Text = "N/A";
             // 
+            // vehicleSpeedLabel
+            // 
+            this.vehicleSpeedLabel.AutoSize = true;
+            this.vehicleSpeedLabel.Location = new System.Drawing.Point(630, 229);
+            this.vehicleSpeedLabel.Name = "vehicleSpeedLabel";
+            this.vehicleSpeedLabel.Size = new System.Drawing.Size(125, 16);
+            this.vehicleSpeedLabel.TabIndex = 55;
+            this.vehicleSpeedLabel.Text = "vehicleSpeedLabel";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 628);
+            this.Controls.Add(this.vehicleSpeedLabel);
             this.Controls.Add(this.PAUValueLabel);
             this.Controls.Add(this.startPAUVoltageTestButton);
             this.Controls.Add(this.emergencyPAUVoltageValueLabel);
@@ -406,6 +417,7 @@
         private System.Windows.Forms.Label emergencyPAUVoltageValueLabel;
         private System.Windows.Forms.Button startPAUVoltageTestButton;
         private System.Windows.Forms.Label PAUValueLabel;
+        private System.Windows.Forms.Label vehicleSpeedLabel;
     }
 }
 
